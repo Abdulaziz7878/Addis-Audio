@@ -14,7 +14,7 @@ const NewAudio = () => {
   const isLoading = useSelector((state) => state.isLoading);
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
-  const [length, setLength] = useState(0);
+  const [length, setLength] = useState(null);
   const dispatch = useDispatch();
   const titleChange = (event) => {
     setTitle(event.target.value);
@@ -23,11 +23,7 @@ const NewAudio = () => {
     setArtist(event.target.value);
   };
   const lengthChange = (event) => {
-    if (typeof event.target.value === "number") {
-      setLength(event.target.value * 1000 * 60);
-    } else {
-      setLength(0);
-    }
+    setLength(event.target.value * 1000 * 60);
   };
 
   const audioSubmitHandler = (event) => {
@@ -36,7 +32,7 @@ const NewAudio = () => {
       addNewAudio({
         strTrack: title,
         strArtist: artist,
-        intDuration: length,
+        intDuration: isNaN(length) ? 0 : length,
         idTrack: Date.now() + "",
       })
     );
