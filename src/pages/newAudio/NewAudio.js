@@ -36,7 +36,7 @@ const NewAudio = () => {
       addNewAudio({
         strTrack: title,
         strArtist: artist,
-        intDuration: length + "",
+        intDuration: length,
         idTrack: Date.now() + "",
       })
     );
