@@ -1,4 +1,4 @@
-import React, { useState, useId } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -15,7 +15,7 @@ const NewAudio = () => {
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
   const [length, setLength] = useState(0);
-  let id = useId();
+  let id = Date.now();
   const dispatch = useDispatch();
   const titleChange = (event) => {
     setTitle(event.target.value);
